@@ -8,7 +8,7 @@ Usage
 
 Simply clone this repo into your home directory, and then execute
 ```bash
-~/dotfile/install.sh
+~/dotfiles/install.sh
 ```
 
 The script will create symlinks from your home directory to the respective files inside
