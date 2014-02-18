@@ -30,19 +30,23 @@ fi
 
 #Iterate through each of our dotfiles
 for FILE in $(ls $DIR); do
-		#Skip this script, and any non-files in here
-		if [ "$SELF" != "$FILE" -a -f $DIR/$FILE ]
+		#Skip the README
+		if [ "README.md" != "$FILE" ]
 		then
-				#If we don't already have a link, make one
-				if [ ! -L ~/.$FILE ]
+				#Skip this script, and any non-files in here
+				if [ "$SELF" != "$FILE" -a -f $DIR/$FILE ]
 				then
-						#Back up the existing file, if present
-						if [ -f ~/.$FILE ]
+						#If we don't already have a link, make one
+						if [ ! -L ~/.$FILE ]
 						then
-								mv ~/.$FILE $OLDDIR/$FILE
+								#Back up the existing file, if present
+								if [ -f ~/.$FILE ]
+								then
+										mv ~/.$FILE $OLDDIR/$FILE
+								fi
+								#Now make the actual symlink
+								ln -s $DIR/$FILE ~/.$FILE
 						fi
-						#Now make the actual symlink
-						ln -s $DIR/$FILE ~/.$FILE
 				fi
 		fi
 done
