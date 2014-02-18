@@ -55,6 +55,7 @@ if [ -f ~/.git-prompt.sh ]; then
 	GIT_PS1_SHOWDIRTYSTATE=true
 	GIT_PS1_SHOWSTASHSTATE=true
 	GIT_PS1_SHOWCOLORHINTS=true
+	GIT_PS1_SHOWUNTRACKEDFILES=true
 	GIT="\[\033[0;35m\]\$(__git_ps1)"
 else
 	GIT=
