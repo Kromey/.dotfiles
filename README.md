@@ -1,5 +1,5 @@
-dotfiles
-========
+.dotfiles
+=========
 
 My personal dotfiles, and a handy script to install them for easy maintenance.
 
@@ -12,7 +12,7 @@ Simply clone this repo into your home directory, and then execute
 ```
 
 The script will create symlinks from your home directory to the respective files inside
-the dotfiles repository. Fork this repository, then either update my dotfiles and/or add
+the .dotfiles repository. Fork this repository, then either update my dotfiles and/or add
 update yours into it, and always have your personalized configurations handy!
 
 The script will detect files that have already been linked, and ignore them. (Note: This
