@@ -1,5 +1,6 @@
-[include]
-	path = ~/.gitconfig.local
+[user]
+	name = Travis Veazey
+	email = travisvz@gmail.com
 [color]
 	branch = auto
 	diff = auto
