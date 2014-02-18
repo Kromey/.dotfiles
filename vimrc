@@ -1,0 +1,164 @@
+" Kromey's .vimrc file
+
+" Turn off vi compatible mode - this needs to be first
+set nocompatible
+
+""""" SECTION 1: UI settings
+
+" My preferred color scheme
+colorscheme darkblue
+
+" I like line numbers
+set nu
+
+" Keep 5 lines between the cursor and the top or bottom of the screen
+set scrolloff=5
+
+" Set some nice character listings, then activate list
+set listchars=
+execute 'set listchars+=tab:\|\ '
+execute 'set listchars+=trail:' . nr2char(183)
+execute 'set listchars+=precedes:' . nr2char(171)
+execute 'set listchars+=extends:' . nr2char(187)
+set list
+
+" Set up a more informative status line, and make it always show up as
+" the next-to-last line
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+
+" Show the current cursor position
+" Made obsolete by the above statusline
+"set ruler
+
+" Display partially-typed commands and current mode in the status line
+set showcmd
+set showmode
+
+" Short messages
+set shortmess=a
+
+" Turn off GVim's annoying toolbar
+set guioptions-=T
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+
+""""" SECTION 2: Editing settings
+
+" Set indentation to be 2 spaces
+"set tabstop=2
+"set shiftwidth=2
+"set shiftround
+
+" Now we get to use a standard tabstop -- good riddan SuperSalon!
+set tabstop=4
+set shiftround
+
+" Turn on C-style autoindent
+set cindent
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Set the default fileformat to unix <NL> line endings
+set fileformats=unix,dos
+set fileformat=unix
+
+" Let's do our new files in Unicode
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Get our swap files out of the way
+set dir=/tmp
+
+
+""""" SECTION 3: Behavior customizations
+
+" Set PHP code folding
+"let php_folding=2
+
+" Default to MySQL syntax highlighting
+let sql_type_default='mysql'
+
+" Set the current working directory to the current buffer - always
+autocmd BufEnter * lcd %:p:h
+
+" Set backup options - backup on write, but don't keep the backup
+set nobackup
+set writebackup
+
+" Store the last 50 commands
+set history=50
+" remember all of these between sessions, but only 10 search terms; also
+" remember info for 10 files, but never any on removable disks, don't remember
+" marks in files, don't rehighlight old search patterns, and only save up to
+" 100 lines of registers; including @10 in there should restrict input buffer
+" but it causes an error for me:
+set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
+
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
+
+" Share the system clipboard
+set clipboard+=unnamed
+
+
+""""" SECTION 4: Customized commands
+
+" Set up an easier-to use abbreviation for NERDTree
+"cabbr tree NERDTree
+
+" Keybindings for PDV - Ctrl-p
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <C-P> :call PhpDocSingle()<CR> 
+vnoremap <C-P> :call PhpDocRange()<CR>
+
+" Enable mouse in normal mode only
+if has('mouse')
+  set mouse=n
+endif
+
+" Associate .tmpl files as PHP files
+" (Convenient for SuperSalon development)
+"au BufNewFile,BufRead *.tmpl set filetype=php
+
+function ToggleVisuals()
+		set list!
+		set nu!
+endfunction
+nnoremap <C-T> :call ToggleVisuals()<CR>
+
+"set diffexpr=MyDiff()
+"function MyDiff()
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  let eq = ''
+"  if $VIMRUNTIME =~ ' '
+"    if &sh =~ '\<cmd'
+"      let cmd = '""' . $VIMRUNTIME . '\diff"'
+"      let eq = '"'
+"    else
+"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"    endif
+"  else
+"    let cmd = $VIMRUNTIME . '\diff'
+"  endif
+"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"endfunction
+
