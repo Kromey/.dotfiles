@@ -12,9 +12,9 @@
 # Configuration
 ##
 #Directory to find your dotfiles
-DIR=~/dotfiles
+DIR=~/.dotfiles
 #Directory to back up existing dotfiles
-OLDDIR=~/dotfiles_old
+OLDDIR=~/.dotfiles/old
 ##
 # End Config
 ##
