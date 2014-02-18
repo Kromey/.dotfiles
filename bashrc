@@ -49,8 +49,19 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+#Add git prompt
+if [ -f ~/.git-prompt.sh ]; then
+	source ~/.git-prompt.sh
+	GIT_PS1_SHOWDIRTYSTATE=true
+	GIT_PS1_SHOWSTASHSTATE=true
+	GIT_PS1_SHOWCOLORHINTS=true
+	GIT="\[\033[0;35m\]\$(__git_ps1)"
+else
+	GIT=
+fi
+
 #if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$GIT\[\033[00m\]\$ "
 #else
 #    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 #fi
