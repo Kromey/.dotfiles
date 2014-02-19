@@ -137,6 +137,12 @@ function ToggleVisuals()
 endfunction
 nnoremap <C-T> :call ToggleVisuals()<CR>
 
+" Give us a command to (temporarily) turn off search highlight
+nnoremap <C-l> :nohlsearch<CR><C-l>
+" Disable search highlighting when entering insert mode
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
+
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
