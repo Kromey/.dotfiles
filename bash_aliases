@@ -14,7 +14,7 @@ fi
 alias ll='ls -Fhl'
 alias lt='ll -t'
 alias la='ll -a'
-alias l.='ls -d .*'
+alias l.='ll -d .*'
 
 alias rmdir='rm -rf'
 
