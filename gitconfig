@@ -13,5 +13,3 @@
 	st = status
 [core]
 	editor = vim
-[merge]
-	ff = false
