@@ -50,8 +50,8 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 #Add git prompt
-if [ -f ~/.git-prompt.sh ]; then
-	source ~/.git-prompt.sh
+if [ -f ~/.dotfiles/lib/git-prompt.sh ]; then
+	source ~/.dotfiles/lib/git-prompt.sh
 	GIT_PS1_SHOWDIRTYSTATE=true
 	GIT_PS1_SHOWSTASHSTATE=true
 	GIT_PS1_SHOWCOLORHINTS=true
