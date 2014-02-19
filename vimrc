@@ -58,6 +58,7 @@ endif
 
 " Now we get to use a standard tabstop -- good riddan SuperSalon!
 set tabstop=4
+set shiftwidth=4
 set shiftround
 
 " Turn on C-style autoindent
