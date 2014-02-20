@@ -112,3 +112,8 @@ fixssh() {
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+# Local .bashrc for adding extras specific to the local machine
+if [ -f ~/.bashrc.local ]; then
+	. ~/.bashrc.local
+fi
