@@ -23,5 +23,6 @@
 	diffs = diff --staged
 [core]
 	editor = vim
+	excludesfile = /home/likewise-open/FSD/f361382/.dotfiles/lib/gitignore_global
 [grep]
 	lineNumber = true
