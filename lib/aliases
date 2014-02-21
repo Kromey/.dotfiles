@@ -30,3 +30,7 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
+# a better clear
+alias clear='echo -en "\033c"'
+alias cls=clear
+
