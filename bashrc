@@ -117,3 +117,10 @@ fi
 if [ -f ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
+
+# A little somethin' somethin' ;-)
+GREETING='tERRGVATF, zNFGRE!'
+if [ -n `which tr` ]; then
+	echo $GREETING | tr a-zA-Z N-ZA-Mn-za-m
+fi
+
