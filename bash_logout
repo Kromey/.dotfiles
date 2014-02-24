@@ -4,12 +4,10 @@
 /usr/bin/sudo -K
 
 # when leaving the console clear the screen to increase privacy
-if [ "$SHLVL" = 1 ]; then
-	echo -en "\033c"
-	#This one doesn't work for my SSH sessions, but leaving here in case it has
-	#some other benefit; the above works, if you don't scroll up...
-	[ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
-fi
+echo -en "\033c"
+#This one doesn't work for my SSH sessions, but leaving here in case it has
+#some other benefit; the above works, if you don't scroll up...
+[ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
 
 GOODBYE='cYRNFR PBZR ONPX FBBA!'
 if [ -n `which tr` ]; then
