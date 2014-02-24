@@ -18,7 +18,10 @@ alias l.='ll -d .*'
 
 alias rmdir='rm -rf'
 
-alias mount='mount | column -t'
+#This one breaks actually using mount...
+#alias mount='mount | column -t'
+
+alias usage='du -h | awk '"'"'END{print $1}'"'"''
 
 alias meminfo='free -mlt'
 
