@@ -18,6 +18,12 @@ alias l.='ll -d .*'
 
 alias rmdir='rm -rf'
 
+# Some handy grep aliases
+alias igrep='grep -i'
+alias cgrep='grep -c'
+alias icgrep='grep -ic'
+alias cigrep=icgrep
+
 #This one breaks actually using mount...
 #alias mount='mount | column -t'
 
