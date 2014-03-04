@@ -144,6 +144,10 @@ nnoremap <C-l> :nohlsearch<CR><C-l>
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
+" Couple of handy Markdown editor commands
+nnoremap <leader>= yypVr=o<Enter><Esc>
+nnoremap <leader>- yypVr-o<Enter><Esc>
+
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
