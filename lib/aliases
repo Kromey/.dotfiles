@@ -24,6 +24,9 @@ alias cgrep='grep -c'
 alias icgrep='grep -ic'
 alias cigrep=icgrep
 
+# Alias of wc (word count) for line counting
+alias lc='wc -l'
+
 #This one breaks actually using mount...
 #alias mount='mount | column -t'
 
