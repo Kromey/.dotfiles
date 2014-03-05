@@ -124,14 +124,17 @@ nnoremap <C-P> :call PhpDocSingle()<CR>
 vnoremap <C-P> :call PhpDocRange()<CR>
 
 " Enable mouse in normal mode only
-if has('mouse')
-  set mouse=n
-endif
+" MOUSE BAD!
+"if has('mouse')
+"  set mouse=n
+"endif
 
 " Associate .tmpl files as PHP files
 " (Convenient for SuperSalon development)
 "au BufNewFile,BufRead *.tmpl set filetype=php
 
+" Handy function and convenient mapping to let me quickly turn off line
+" numbering and list mode
 function ToggleVisuals()
 		set list!
 		set nu!
@@ -145,8 +148,16 @@ autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
 " Couple of handy Markdown editor commands
-nnoremap <leader>= yypVr=o<Enter><Esc>
-nnoremap <leader>- yypVr-o<Enter><Esc>
+nnoremap <leader>= yypVr=o<CR><Esc>
+nnoremap <leader>- yypVr-o<CR><Esc>
+
+" Make blockwise indent keep your visual mode selection
+vnoremap > >gv
+vnoremap < <gv
+
+" Make Y consistent with C, D
+" Y normally yanks the whole line, but I use yy for that anyway
+nnoremap Y y$
 
 "set diffexpr=MyDiff()
 "function MyDiff()
