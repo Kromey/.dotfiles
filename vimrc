@@ -170,6 +170,24 @@ nnoremap <leader>P DO<Esc>P==^
 " Same as previous, except other way 'round
 nnoremap <leader>p ^D"_ddA <Esc>p
 
+" File-fixing:
+" Functions to fix indentation and to eliminate trailing whitespace.
+function! StripTrailingWhitespace()
+	normal mq
+	let l:oldsearch=@/
+	%s/\s\+$//e
+	let @/=l:oldsearch
+	normal `q
+endfunction
+function! FixFileIndent()
+	normal mq
+	normal gg=G
+	normal `q
+endfunction
+nnoremap <leader>$ :call StripTrailingWhitespace()<Cr>
+nnoremap <leader>= :call FixFileIndent()<Cr>
+nnoremap <leader>+ :call StripTrailingWhitespace()<Cr>:call FixFileIndent()<Cr>
+
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
