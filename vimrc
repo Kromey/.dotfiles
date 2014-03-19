@@ -188,6 +188,10 @@ nnoremap <leader>$ :call StripTrailingWhitespace()<Cr>
 nnoremap <leader>= :call FixFileIndent()<Cr>
 nnoremap <leader>+ :call StripTrailingWhitespace()<Cr>:call FixFileIndent()<Cr>
 
+" Allow pasting from unnamed buffer in insert mode after cursor
+" NOTE: Doesn't work on an empty line (TODO: Why?)
+inoremap <C-V> q<Esc>Plvc
+
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
