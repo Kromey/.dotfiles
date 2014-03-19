@@ -164,6 +164,12 @@ vnoremap < <gv
 " Y normally yanks the whole line, but I use yy for that anyway
 nnoremap Y y$
 
+" Normal mode command to take the rest of the line from the cursor and put it
+" on a new line previous to the current; useful for e.g. moving a comment
+nnoremap <leader>P DO<Esc>P==^
+" Same as previous, except other way 'round
+nnoremap <leader>p ^D"_ddA <Esc>p
+
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
