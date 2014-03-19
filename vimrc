@@ -88,7 +88,7 @@ set dir=/tmp
 let sql_type_default='mysql'
 
 " Set the current working directory to the current buffer - always
-autocmd BufEnter * lcd %:p:h
+set autochdir
 
 " Set backup options - backup on write, but don't keep the backup
 set nobackup
@@ -122,6 +122,11 @@ set clipboard+=unnamed
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
 nnoremap <C-P> :call PhpDocSingle()<CR> 
 vnoremap <C-P> :call PhpDocRange()<CR>
+
+" ctags! yay!
+" Look for tags file in the (document-relative) current directory, then upward
+" The ';' is the magic here; see :help file-searching
+set tags=./tags,tags;
 
 " Enable mouse in normal mode only
 " MOUSE BAD!
