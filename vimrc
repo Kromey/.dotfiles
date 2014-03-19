@@ -153,8 +153,8 @@ autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
 " Couple of handy Markdown editor commands
-nnoremap <leader>= yypVr=o<CR><Esc>
-nnoremap <leader>- yypVr-o<CR><Esc>
+nnoremap <leader>1 yypVr=o<CR><Esc>
+nnoremap <leader>2 yypVr-o<CR><Esc>
 
 " Make blockwise indent keep your visual mode selection
 vnoremap > >gv
