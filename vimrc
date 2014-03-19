@@ -140,9 +140,9 @@ set tags=./tags,tags;
 
 " Handy function and convenient mapping to let me quickly turn off line
 " numbering and list mode
-function ToggleVisuals()
-		set list!
-		set nu!
+function! ToggleVisuals()
+	set list!
+	set nu!
 endfunction
 nnoremap <C-T> :call ToggleVisuals()<CR>
 
