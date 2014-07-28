@@ -112,23 +112,11 @@ filetype plugin indent on
 " Share the system clipboard
 set clipboard+=unnamed
 
-" Customize our runtimepath to pick up our plugins
+" Customize our runtimepath to pick up our plugins etc.
 set runtimepath=~/.dotfiles/vim,$VIMRUNTIME
 
 
 """"" SECTION 4: Customized commands
-
-" Set up an easier-to use abbreviation for NERDTree
-"cabbr tree NERDTree
-
-" Keybindings for PDV - Ctrl-p
-"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-"nnoremap <C-P> :call PhpDocSingle()<CR> 
-"vnoremap <C-P> :call PhpDocRange()<CR>
-" We use DoxygenToolkit now
-inoremap <C-B> <ESC>:Dox<CR>i 
-nnoremap <C-B> :Dox<CR> 
-vnoremap <C-B> :Dox<CR>
 
 " ctags! yay!
 " Look for tags file in the (document-relative) current directory, then upward
@@ -199,28 +187,20 @@ nnoremap <leader>+ :call StripTrailingWhitespace()<Cr>:call FixFileIndent()<Cr>
 " NOTE: Doesn't work on an empty line (TODO: Why?)
 inoremap <C-V> q<Esc>Plvc
 
-"set diffexpr=MyDiff()
-"function MyDiff()
-"  let opt = '-a --binary '
-"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"  let arg1 = v:fname_in
-"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"  let arg2 = v:fname_new
-"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"  let arg3 = v:fname_out
-"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"  let eq = ''
-"  if $VIMRUNTIME =~ ' '
-"    if &sh =~ '\<cmd'
-"      let cmd = '""' . $VIMRUNTIME . '\diff"'
-"      let eq = '"'
-"    else
-"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"    endif
-"  else
-"    let cmd = $VIMRUNTIME . '\diff'
-"  endif
-"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-"endfunction
+
+""""" SECTION 5: Plugin customizations
+
+""" NERDTree
+" Set up an easier-to use abbreviation for NERDTree
+"cabbr tree NERDTree
+
+" Keybindings for PDV - Ctrl-p
+"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+"nnoremap <C-P> :call PhpDocSingle()<CR> 
+"vnoremap <C-P> :call PhpDocRange()<CR>
+
+" Keybinding for DoxygenToolkit
+inoremap <C-B> <ESC>:Dox<CR>i 
+nnoremap <C-B> :Dox<CR> 
+vnoremap <C-B> :Dox<CR>
 
