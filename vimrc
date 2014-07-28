@@ -112,6 +112,9 @@ filetype plugin indent on
 " Share the system clipboard
 set clipboard+=unnamed
 
+" Customize our runtimepath to pick up our plugins
+set runtimepath=~/.dotfiles/vim,$VIMRUNTIME
+
 
 """"" SECTION 4: Customized commands
 
@@ -119,9 +122,13 @@ set clipboard+=unnamed
 "cabbr tree NERDTree
 
 " Keybindings for PDV - Ctrl-p
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR>
+"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+"nnoremap <C-P> :call PhpDocSingle()<CR> 
+"vnoremap <C-P> :call PhpDocRange()<CR>
+" We use DoxygenToolkit now
+inoremap <C-B> <ESC>:Dox<CR>i 
+nnoremap <C-B> :Dox<CR> 
+vnoremap <C-B> :Dox<CR>
 
 " ctags! yay!
 " Look for tags file in the (document-relative) current directory, then upward
