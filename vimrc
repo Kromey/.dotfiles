@@ -63,6 +63,10 @@ set shiftround
 
 " Turn on C-style autoindent
 set cindent
+" Don't treat '#' specially
+" http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash
+set cinkeys-=0#
+set indentkeys-=0#
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
