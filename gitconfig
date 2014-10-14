@@ -25,6 +25,6 @@
 	unassume = update-index --no-assume-unchanged
 [core]
 	editor = vim
-	excludesfile = /home/likewise-open/FSD/f361382/.dotfiles/lib/gitignore_global
+	excludesfile = ~/.dotfiles/lib/gitignore_global
 [grep]
 	lineNumber = true
