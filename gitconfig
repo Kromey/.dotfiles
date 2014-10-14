@@ -28,3 +28,5 @@
 	excludesfile = ~/.dotfiles/lib/gitignore_global
 [grep]
 	lineNumber = true
+[push]
+	default = simple
