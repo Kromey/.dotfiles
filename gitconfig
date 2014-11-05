@@ -19,6 +19,7 @@
 	filelog = log -u
 	fl = log -u
 	la = !git config -l | grep alias | cut -c 7-
+	alias = !git config -l | grep alias | cut -c 7-
 	rem = !git config -l | grep remote.*url | tail -n +2
 	diffs = diff --staged
 	assume = update-index --assume-unchanged
