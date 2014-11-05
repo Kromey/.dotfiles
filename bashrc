@@ -107,15 +107,17 @@ fixssh() {
 }
 
 sortfile() {
-	for file in $1; do
+	for file in "$@"; do
+		#Make a temp file for us to work with
 		if [ -n `which mktemp` ]; then
 			tmpfile=$(mktemp)
 		else
 			tmpfile="/tmp/$(basename "$1")"
 		fi
-		cp "$file" "$tmpfile"
-		sort "$tmpfile" | uniq > "$file"
-		rm "$tmpfile"
+		#Do this all on tempfiles to avoid clobbering the real file on a failure
+		sort "$file" -o "$tmpfile" && uniq "$tmpfile" "$tmpfile.1" && mv "$tmpfile.1" "$file"
+		#Clean up
+		rm "$tmpfile"*
 	done
 }
 
