@@ -106,6 +106,19 @@ fixssh() {
 	done
 }
 
+sortfile() {
+	for file in $1; do
+		if [ -n `which mktemp` ]; then
+			tmpfile=$(mktemp)
+		else
+			tmpfile="/tmp/$(basename "$1")"
+		fi
+		cp "$file" "$tmpfile"
+		sort "$tmpfile" | uniq > "$file"
+		rm "$tmpfile"
+	done
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
