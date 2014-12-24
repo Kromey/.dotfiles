@@ -24,6 +24,8 @@ alias cgrep='grep -c'
 alias icgrep='grep -ic'
 alias cigrep=icgrep
 
+alias cdup='cd ../'
+
 # Since I too-often cat binary files, make cat safe (against me)...
 alias cat='cat -v'
 
