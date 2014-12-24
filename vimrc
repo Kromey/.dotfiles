@@ -3,6 +3,9 @@
 " Turn off vi compatible mode - this needs to be first
 set nocompatible
 
+" Clear autocmds
+autocmd!
+
 """"" SECTION 1: UI settings
 
 " My preferred color scheme
@@ -112,6 +115,9 @@ set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
+
+" PEP-8 Python indentation
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 
 " Share the system clipboard
 set clipboard+=unnamed
