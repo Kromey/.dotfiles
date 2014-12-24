@@ -24,6 +24,9 @@ alias cgrep='grep -c'
 alias icgrep='grep -ic'
 alias cigrep=icgrep
 
+# Since I too-often cat binary files, make cat safe (against me)...
+alias cat='cat -v'
+
 # Alias of wc (word count) for line counting
 alias lc='wc -l'
 
