@@ -121,6 +121,13 @@ sortfile() {
 	done
 }
 
+git-ignorelinks() {
+	for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
+		test -L "$f" && echo $f >> .gitignore;
+		test -d "$f" && echo $f\* >> .gitignore;
+	done
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
