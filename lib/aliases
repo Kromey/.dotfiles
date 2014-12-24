@@ -33,8 +33,8 @@ alias lc='wc -l'
 # Who the heck ever heard of a calculator without FP??
 alias bc='bc -l'
 
-#This one breaks actually using mount...
-#alias mount='mount | column -t'
+# Pretty output of current mounts
+alias mounts='mount | column -t'
 
 alias usage='du -h | awk '"'"'END{print $1}'"'"''
 
