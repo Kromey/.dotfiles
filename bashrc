@@ -121,6 +121,16 @@ sortfile() {
 	done
 }
 
+ssh-copy-terminfo() {
+    if [ "$#" -lt 1 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+        echo "Usage: $0 [user@]machine" >&2
+        exit 1
+    fi
+
+    FILE=ssh-copy-terminfo.tmp.ti
+    infocmp | ssh $1 "cat > $FILE ; tic $FILE ; rm $FILE"
+}
+
 git-ignorelinks() {
 	for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
 		test -L "$f" && echo $f >> .gitignore;
