@@ -95,7 +95,6 @@ fi
 
 BIN=~/.dotfiles/bin
 if [[ -d $BIN ]] && [[ ! "$PATH" =~ $BIN ]]; then
-	echo Extending PATH
 	export PATH="${BIN}:${PATH}"
 fi
 
