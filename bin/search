@@ -1,0 +1,5 @@
+#!/bin/bash
+
+local DIR="$2"
+[ "$DIR" == "" ] && DIR=./;
+grep -HnR "$1" "$DIR" | grep -v '\.svn' | grep -v 'Binary file';

@@ -99,47 +99,6 @@ if [[ -d $BIN ]] && [[ ! "$PATH" =~ $BIN ]]; then
 	export PATH="${BIN}:${PATH}"
 fi
 
-search()
-{
-	local DIR="$2"
-	[ "$DIR" == "" ] && DIR=./;
-	grep -HnR "$1" "$DIR" | grep -v '\.svn' | grep -v 'Binary file';
-}
-
-fixssh() {
-	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
-		if (tmux show-environment | grep "^${key}" > /dev/null); then
-			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
-			export ${key}="${value}"
-		fi
-	done
-}
-
-sortfile() {
-	for file in "$@"; do
-		#Make a temp file for us to work with
-		if [ -n `which mktemp` ]; then
-			tmpfile=$(mktemp)
-		else
-			tmpfile="/tmp/$(basename "$1")"
-		fi
-		#Do this all on tempfiles to avoid clobbering the real file on a failure
-		sort "$file" -o "$tmpfile" && uniq "$tmpfile" "$tmpfile.1" && mv "$tmpfile.1" "$file"
-		#Clean up
-		rm "$tmpfile"*
-	done
-}
-
-ssh-copy-terminfo() {
-    if [ "$#" -lt 1 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-        echo "Usage: $0 [user@]machine" >&2
-        exit 1
-    fi
-
-    FILE=ssh-copy-terminfo.tmp.ti
-    infocmp | ssh $1 "cat > $FILE ; tic $FILE ; rm $FILE"
-}
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
