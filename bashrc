@@ -111,19 +111,20 @@ if [ -f ~/.bashrc.local ]; then
 fi
 
 # Source virtualenvwrapper if it exists
-if [ -n `which virtualenvwrapper.sh` ]; then
+VENVWRAPPER="$(which virtualenvwrapper.sh)"
+if [ -n "$VENVWRAPPER" ] && [ -f "$VENVWRAPPER" ]; then
 	if [ -z "$WORKON_HOME" ]; then
 		export WORKON_HOME=~/.venvs
 	fi
 	mkdir -p $WORKON_HOME 2>/dev/null || echo "WARNING: Unable to create $WORKON_HOME"
 	if [ -d "$WORKON_HOME" ]; then
-		source `which virtualenvwrapper.sh`
+		source $VENVWRAPPER
 	fi
 fi
 
 # A little somethin' somethin' ;-)
 GREETING='tERRGVATF, zNFGRE!'
-if [ -n `which tr` ]; then
+if [ -n "$(which tr)" ]; then
 	echo $GREETING | tr a-zA-Z N-ZA-Mn-za-m
 fi
 
