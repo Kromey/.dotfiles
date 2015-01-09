@@ -90,6 +90,15 @@ if [ -f ~/.dotfiles/lib/aliases ]; then
     . ~/.dotfiles/lib/aliases
 fi
 
+# Custom path extension
+# Allows to use the bin directory in this project to stash scripts etc.
+
+BIN=~/.dotfiles/bin
+if [[ -d $BIN ]] && [[ ! "$PATH" =~ $BIN ]]; then
+	echo Extending PATH
+	export PATH="${BIN}:${PATH}"
+fi
+
 search()
 {
 	local DIR="$2"
