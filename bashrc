@@ -116,7 +116,11 @@ if [ -n "$VENVWRAPPER" ] && [ -f "$VENVWRAPPER" ]; then
 	if [ -z "$WORKON_HOME" ]; then
 		export WORKON_HOME=~/.venvs
 	fi
+	if [ -z "$PROJECT_HOME" ]; then
+		export PROJECT_HOME=~/projects
+	fi
 	mkdir -p $WORKON_HOME 2>/dev/null || echo "WARNING: Unable to create $WORKON_HOME"
+	mkdir -p $PROJECT_HOME 2>/dev/null || echo "WARNING: Unable to create $PROJECT_HOME"
 	if [ -d "$WORKON_HOME" ]; then
 		source $VENVWRAPPER
 	fi
