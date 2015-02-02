@@ -1,0 +1,87 @@
+#!/usr/bin/python
+"""A simple Python port-knocking script
+
+This script allows a client machine to quickly send a "secret knock" to a known
+sequence of ports on a remote server in order to open up an otherwise-closed
+port to the client.
+
+An example port-knocking implementation using iptables:
+-N knocker
+-A knocker -p tcp --dport 22 -m recent --rcheck --seconds 30 --name stage3 -j ACCEPT
+-A knocker -p tcp --dport 3333 -m recent --rcheck --seconds 10 --name stage2 -m recent --set --name stage3
+-A knocker -p tcp -m recent --remove --name stage2
+-A knocker -p tcp --dport 2222 -m recent --rcheck --seconds 10 --name stage1 -m recent --set --name stage2
+-A knocker -p tcp -m recent --remove --name stage1
+-A knocker -p tcp --dport 1111 -m recent --set --name stage1
+
+-A INPUT -j knocker
+"""
+
+import socket
+import os
+from time import sleep
+
+class Knocker:
+    def __init__(self, host):
+        """Initialize the instance with the host to knock on"""
+        self.host = host
+
+    def open(self, seq):
+        """Knock on the ports in the list seq"""
+        for port in seq:
+            self._knock(port)
+            sleep(0.2)
+
+    def _knock(self, port):
+        """Knock on the given port"""
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.setblocking(0)
+            s.connect( (self.host, port) )
+        except socket.error:
+            pass
+
+def validate_port(port):
+    """Validate a port number
+
+    Returns true only if port is a positive integer between 1 and 65,535
+    """
+    port = int(port)
+    if port < 1 or port > 65535:
+        raise ValueError('{} is not a valid port number'.format(port))
+    return port
+
+
+def main():
+    """Run the script
+
+    The script first asks for the host name, and then a comma-delimited sequence
+    of ports to "knock" on. Once the user has provided the information, the
+    script performs the "secret knock" and returns control to the user.
+    """
+    host = ''
+    ports = []
+
+    #Get the host name
+    host = raw_input("Host: ")
+
+    #Get the sequence of port numbers, separated by commas
+    p = raw_input("Ports (e.g. 1111,2222,3333): ")
+    p = p.split(',')
+    #Validate each port number
+    ports = map(validate_port, p)
+
+    #Clear the screen so a casual observer can't see our "secret knock"
+    os.system('clear')
+
+    #Now perform the knock
+    #TODO: Add exception handling here, with pretty/helpful error messages
+    print("Knocking on {}...".format(host))
+    knock = Knocker(host)
+    knock.open(ports)
+    print("Knocked!")
+
+if __name__ == '__main__':
+    #Run the script if it's called directly
+    main()
+
