@@ -18,6 +18,9 @@ alias l.='ll -d .*'
 
 alias rmdir='rm -rf'
 
+# Alias to knock before SSH'ing
+alias sshknock='knocker && ssh'
+
 # Some handy grep aliases
 alias igrep='grep -i'
 alias cgrep='grep -c'
