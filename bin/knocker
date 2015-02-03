@@ -20,6 +20,7 @@ An example port-knocking implementation using iptables:
 import socket
 import os
 import argparse
+import subprocess
 from time import sleep
 
 class Knocker:
@@ -78,6 +79,7 @@ def main():
     parser = argparse.ArgumentParser(description='Knock on a sequence of ports on a remote server')
     parser.add_argument('host', nargs='?', help='host to connect to')
     parser.add_argument('ports', nargs='*', type=valid_port, help='port(s) to knock on, in sequence')
+    parser.add_argument('-s', '--ssh', action='store_true', help='open SSH connection immediately after knocking')
     args = parser.parse_args()
 
     if args.host:
@@ -99,6 +101,10 @@ def main():
     knock = Knocker(host)
     knock.open(ports)
     print("Knocked!")
+
+    if args.ssh:
+        print("Opening SSH connection...")
+        subprocess.call(['ssh', host])
 
 if __name__ == '__main__':
     #Run the script if it's called directly
