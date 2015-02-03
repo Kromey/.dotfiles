@@ -80,6 +80,7 @@ def main():
     parser.add_argument('host', nargs='?', help='host to connect to')
     parser.add_argument('port', nargs='*', type=valid_port, help='sequence of ports to knock on')
     parser.add_argument('--ssh', '-s', action='store_true', help='open SSH connection immediately after knocking')
+    parser.add_argument('--user', '-u', help='user to connect as (only useful with --ssh)')
     args = parser.parse_args()
 
     if args.host:
@@ -103,8 +104,13 @@ def main():
     print("Knocked!")
 
     if args.ssh:
+        if args.user:
+            ssh_host = '{}@{}'.format(args.user, host)
+        else:
+            ssh_host = host
+
         print("Opening SSH connection...")
-        subprocess.call(['ssh', host])
+        subprocess.call(['ssh', ssh_host])
 
 if __name__ == '__main__':
     #Run the script if it's called directly
