@@ -19,6 +19,7 @@ An example port-knocking implementation using iptables:
 
 import socket
 import os
+import argparse
 from time import sleep
 
 class Knocker:
@@ -41,16 +42,27 @@ class Knocker:
         except socket.error:
             pass
 
-def validate_port(port):
+def valid_port(port):
     """Validate a port number
 
     Returns true only if port is a positive integer between 1 and 65,535
     """
     port = int(port)
     if port < 1 or port > 65535:
-        raise ValueError('{} is not a valid port number'.format(port))
+        raise argparse.ArgumentTypeError('{} is not a valid port number'.format(port))
     return port
 
+def get_host():
+    #Get the host name
+    return raw_input("Host: ")
+
+def get_ports():
+    #Get the sequence of port numbers, separated by commas
+    p = raw_input("Ports (e.g. 1111,2222,3333): ")
+    p = p.split(',')
+
+    #Validate each port number
+    return map(valid_port, p)
 
 def main():
     """Run the script
@@ -62,14 +74,21 @@ def main():
     host = ''
     ports = []
 
-    #Get the host name
-    host = raw_input("Host: ")
+    #Parse command-line arguments we may have been passed
+    parser = argparse.ArgumentParser(description='Knock on a sequence of ports on a remote server')
+    parser.add_argument('host', nargs='?', help='host to connect to')
+    parser.add_argument('ports', nargs='*', type=valid_port, help='port(s) to knock on, in sequence')
+    args = parser.parse_args()
 
-    #Get the sequence of port numbers, separated by commas
-    p = raw_input("Ports (e.g. 1111,2222,3333): ")
-    p = p.split(',')
-    #Validate each port number
-    ports = map(validate_port, p)
+    if args.host:
+        host = args.host
+    else:
+        host = get_host()
+
+    if args.ports:
+        ports = args.ports
+    else:
+        ports = get_ports()
 
     #Clear the screen so a casual observer can't see our "secret knock"
     os.system('clear')
