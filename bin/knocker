@@ -79,7 +79,7 @@ def main():
     parser = argparse.ArgumentParser(description='Knock on a sequence of ports on a remote server')
     parser.add_argument('host', nargs='?', help='host to connect to')
     parser.add_argument('ports', nargs='*', type=valid_port, help='port(s) to knock on, in sequence')
-    parser.add_argument('-s', '--ssh', action='store_true', help='open SSH connection immediately after knocking')
+    parser.add_argument('--ssh', '-s', action='store_true', help='open SSH connection immediately after knocking')
     args = parser.parse_args()
 
     if args.host:
