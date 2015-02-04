@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """A simple Python port-knocking script
 
 This script allows a client machine to quickly send a "secret knock" to a known
@@ -55,11 +55,11 @@ def valid_port(port):
 
 def get_host():
     #Get the host name
-    return raw_input("Host: ")
+    return input("Host: ")
 
 def get_ports():
     #Get the sequence of port numbers, separated by commas
-    p = raw_input("Ports (e.g. 1111,2222,3333): ")
+    p = input("Ports (e.g. 1111,2222,3333): ")
     p = p.split(',')
 
     #Validate each port number
