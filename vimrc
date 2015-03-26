@@ -210,7 +210,8 @@ inoremap <C-V> q<Esc>Plvc
 "vnoremap <C-P> :call PhpDocRange()<CR>
 
 " Keybinding for DoxygenToolkit
-inoremap <C-B> <ESC>:Dox<CR>i 
-nnoremap <C-B> :Dox<CR> 
-vnoremap <C-B> :Dox<CR>
+let g:DoxygenToolkit_briefTag_pre = ""
+inoremap <C-D> <ESC>:Dox<CR>i 
+nnoremap <C-D> :Dox<CR> 
+vnoremap <C-D> :Dox<CR>
 
