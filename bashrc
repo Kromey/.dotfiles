@@ -98,6 +98,15 @@ if [[ -d $BIN ]] && [[ ! "$PATH" =~ $BIN ]]; then
 	export PATH="${BIN}:${PATH}"
 fi
 
+fixssh() {
+	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+		if (tmux show-environment | grep "^${key}" > /dev/null); then
+			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+			export ${key}="${value}"
+		fi
+	done
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
