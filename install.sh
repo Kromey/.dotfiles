@@ -12,7 +12,7 @@
 # Configuration
 ##
 #Directory to find your dotfiles
-DIR=~/.dotfiles
+DIR=~/.dotfiles/home
 #Directory to back up existing dotfiles
 OLDDIR=~/.dotfiles/old
 ##
@@ -36,14 +36,16 @@ for FILE in $(ls $DIR); do
 				#Skip this script, and any non-files in here
 				if [ "$SELF" != "$FILE" -a -f $DIR/$FILE ]
 				then
-						#If we don't already have a link, make one
-						if [ ! -L ~/.$FILE ]
+						#If we don't already have a (valid) link, make one
+						if [ ! -L ~/.$FILE -o ! -e ~/.$FILE ]
 						then
 								#Back up the existing file, if present
 								if [ -f ~/.$FILE ]
 								then
 										mv ~/.$FILE $OLDDIR/$FILE
 								fi
+								#Clean up anything that might be in the way
+								rm -f ~/.$FILE
 								#Now make the actual symlink
 								ln -s $DIR/$FILE ~/.$FILE
 						fi
