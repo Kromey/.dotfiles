@@ -19,37 +19,30 @@ OLDDIR=~/.dotfiles/old
 # End Config
 ##
 
-#Find this script's name so we don't link it
-SELF=$(basename $0)
-
 #First create our backup directory, if it doesn't exist
 if [ ! -d $OLDDIR ]
 then
-		mkdir -p $OLDDIR
+	mkdir -p $OLDDIR
 fi
 
 #Iterate through each of our dotfiles
 for FILE in $(ls $DIR); do
-		#Skip the README
-		if [ "README.md" != "$FILE" ]
+	#Skip any non-files (e.g. . and ..)
+	if [ -f $DIR/$FILE ]
+	then
+		#If we don't already have a (valid) link, make one
+		if [ ! -L ~/.$FILE -o ! -e ~/.$FILE ]
 		then
-				#Skip this script, and any non-files in here
-				if [ "$SELF" != "$FILE" -a -f $DIR/$FILE ]
-				then
-						#If we don't already have a (valid) link, make one
-						if [ ! -L ~/.$FILE -o ! -e ~/.$FILE ]
-						then
-								#Back up the existing file, if present
-								if [ -f ~/.$FILE ]
-								then
-										mv ~/.$FILE $OLDDIR/$FILE
-								fi
-								#Clean up anything that might be in the way
-								rm -f ~/.$FILE
-								#Now make the actual symlink
-								ln -s $DIR/$FILE ~/.$FILE
-						fi
-				fi
+			#Back up the existing file, if present
+			if [ -f ~/.$FILE ]
+			then
+				mv ~/.$FILE $OLDDIR/$FILE
+			fi
+			#Clean up anything that might be in the way
+			rm -f ~/.$FILE
+			#Now make the actual symlink
+			ln -s $DIR/$FILE ~/.$FILE
 		fi
+	fi
 done
 
