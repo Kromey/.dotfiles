@@ -22,6 +22,7 @@
 	alias = !git config -l | grep alias | cut -c 7-
 	rem = !git config -l | grep remote.*url | tail -n +2
 	diffs = diff --staged
+	head = !git ls | head
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
 [core]
