@@ -202,6 +202,9 @@ inoremap <C-V> q<Esc>Plvc
 
 """"" SECTION 5: Plugin customizations
 
+" Execute Pathogen
+execute pathogen#infect()
+
 """ NERDTree
 " Set up an easier-to use abbreviation for NERDTree
 "cabbr tree NERDTree
