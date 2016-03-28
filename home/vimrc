@@ -121,6 +121,9 @@ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " Since I mostly use JSON with Python these days, do the same for JSON
 autocmd BufNewFile,BufRead *.json setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
+" YAML
+autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+
 " Share the system clipboard
 set clipboard+=unnamed
 
