@@ -118,6 +118,8 @@ filetype plugin indent on
 
 " PEP-8 Python indentation
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" Since I mostly use JSON with Python these days, do the same for JSON
+autocmd BufNewFile,BufRead *.json setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Share the system clipboard
 set clipboard+=unnamed
