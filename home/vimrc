@@ -65,7 +65,7 @@ set shiftwidth=4
 set shiftround
 
 " Turn on C-style autoindent
-set cindent
+"set cindent
 " Don't treat '#' specially
 " http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash
 set cinkeys-=0#
@@ -115,14 +115,6 @@ set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
-
-" PEP-8 Python indentation
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-" Since I mostly use JSON with Python these days, do the same for JSON
-autocmd BufNewFile,BufRead *.json setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-
-" YAML
-autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 " Share the system clipboard
 set clipboard+=unnamed
