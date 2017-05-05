@@ -140,6 +140,10 @@ set tags=./tags,tags;
 " (Convenient for SuperSalon development)
 "au BufNewFile,BufRead *.tmpl set filetype=php
 
+" Associate .html files as Django templates
+" Not going to hurt regular HTML at all, but does give us the Django stuff
+au BufNewFile,BufRead *.html set filetype=htmldjango
+
 " Handy function and convenient mapping to let me quickly turn off line
 " numbering and list mode
 function! ToggleVisuals()
