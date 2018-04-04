@@ -57,6 +57,10 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias clear='echo -en "\033c"'
 alias cls=clear
 
+# a simple tea timer
+# pip install termdown
+alias tea='termdown --text DONE! --blink'
+
 # just for funsies
 # TODO: Guard conditions to fail gracefully if library not installed
 alias xmas='perl -MAcme::POE::Tree -e "Acme::POE::Tree->new()->run()"'
