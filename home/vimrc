@@ -122,6 +122,10 @@ set clipboard+=unnamed
 " Customize our runtimepath to pick up our plugins etc.
 set runtimepath=~/.dotfiles/vim,$VIMRUNTIME
 
+" More natural split opening
+set splitbelow
+set splitright
+
 
 """"" SECTION 4: Customized commands
 
@@ -199,6 +203,13 @@ nnoremap <leader>+ :call StripTrailingWhitespace()<Cr>:call FixFileIndent()<Cr>
 " Allow pasting from unnamed buffer in insert mode after cursor
 " NOTE: Doesn't work on an empty line (TODO: Why?)
 inoremap <C-V> q<Esc>Plvc
+
+" Easier split navigations
+" But I use <C-L> all the time...
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
 
 
 """"" SECTION 5: Plugin customizations
