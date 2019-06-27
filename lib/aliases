@@ -61,7 +61,6 @@ alias cls=clear
 # pip install termdown
 alias tea='termdown --text DONE! --blink'
 
-# just for funsies
-# TODO: Guard conditions to fail gracefully if library not installed
-alias xmas='perl -MAcme::POE::Tree -e "Acme::POE::Tree->new()->run()"'
+# because who doesn't need this one?
+alias please='sudo $(history -p !!)'
 
