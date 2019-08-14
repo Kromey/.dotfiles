@@ -9,7 +9,8 @@ autocmd!
 """"" SECTION 1: UI settings
 
 " My preferred color scheme
-colorscheme darkblue
+"colorscheme darkblue
+" Using a plugin (Solarized) now, so this has moved to after Pathogen
 
 " I like line numbers
 set nu
@@ -216,6 +217,11 @@ inoremap <C-V> q<Esc>Plvc
 
 " Execute Pathogen
 execute pathogen#infect()
+
+" Solarized
+syntax enable
+set background=dark
+colorscheme solarized
 
 """ NERDTree
 " Set up an easier-to use abbreviation for NERDTree
