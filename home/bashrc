@@ -105,10 +105,6 @@ elif hash vi 2>/dev/null; then
 	export EDITOR=vi
 fi
 
-# TODO: Fix colors in vim
-# For now, this takes us back to old-school color pallette
-export TERM=xterm-color
-
 fixssh() {
 	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
 		if (tmux show-environment | grep "^${key}" > /dev/null); then
