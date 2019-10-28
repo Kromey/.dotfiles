@@ -8,6 +8,10 @@ autocmd!
 
 """"" SECTION 1: UI settings
 
+" Set window title to current file
+" Works just like magic when switching buffers etc. too
+set title
+
 " My preferred color scheme
 "colorscheme darkblue
 " Using a plugin (Solarized) now, so this has moved to after Pathogen
