@@ -126,6 +126,7 @@ set clipboard+=unnamed
 
 " Customize our runtimepath to pick up our plugins etc.
 set runtimepath=~/.dotfiles/vim,$VIMRUNTIME
+set packpath=~/.dotfiles/vim,$VIMRUNTIME
 
 " More natural split opening
 set splitbelow
@@ -215,6 +216,21 @@ inoremap <C-V> q<Esc>Plvc
 "nnoremap <C-K> <C-W><C-K>
 "nnoremap <C-L> <C-W><C-L>
 "nnoremap <C-H> <C-W><C-H>
+
+" Super-fast wordcounter
+function! WordCount()
+	let s:old_status = v:statusmsg
+	let position = getpos(".")
+	exe ":silent normal g\<C-g>"
+	let stat = v:statusmsg
+	let s:word_count = 0
+	if stat != '--No lines in buffer--'
+		let s:word_count = str2nr(split(v:statusmsg)[11])
+		let v:statusmsg = s:old_status
+	end
+	call setpos('.', position)
+	return s:word_count
+endfunction
 
 
 """"" SECTION 5: Plugin customizations
