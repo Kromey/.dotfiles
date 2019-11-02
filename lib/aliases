@@ -64,3 +64,5 @@ alias tea='termdown --text DONE! --blink'
 # because who doesn't need this one?
 alias please='sudo $(history -p !!)'
 
+# quick start-up of my prose-centric vim
+alias pencil='vim + -S ~/.dotfiles/vim/prose_vimrc'
