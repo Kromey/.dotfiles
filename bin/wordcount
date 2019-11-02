@@ -1,0 +1,18 @@
+#!/bin/bash
+
+MANUSCRIPT=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -z "$MANUSCRIPT" ]
+then
+	echo "Not in a git repository"
+	exit 1
+fi
+
+if [ ! -d "$MANUSCRIPT/manuscript" ]
+then
+	echo "Manuscript directory not found"
+	exit 2
+fi
+
+WORDS=$(wc -w `find $MANUSCRIPT/manuscript -type f` | tail -n1 | cut -d" " -f2)
+
+echo "$WORDS words"
