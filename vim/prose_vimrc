@@ -1,0 +1,50 @@
+" Vim settings for prose writing
+
+
+" Use 'light' mode
+set background=light
+
+" Set up 'soft' word wrapping
+set wrap
+set linebreak
+
+" Hide line numbers and list characters
+set nonumber
+set nolist
+
+" Keep the cursor off the top/bottom/left of the screen
+set scrolloff=5
+set foldcolumn=3
+
+" Some key mappings to keep me sane here
+map j gj
+map k gk
+inoremap qq <esc>
+
+" Set up Limelight to start and end with Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" Limelight doesn't understand Solarized color scheme
+let g:limelight_conceal_ctermfg = 250
+
+" Super-fast wordcounter
+function! WordCount()
+	let s:old_status = v:statusmsg
+	let position = getpos(".")
+	exe ":silent normal g\<C-g>"
+	let stat = v:statusmsg
+	let s:word_count = 0
+	if stat != '--No lines in buffer--'
+		let s:word_count = str2nr(split(v:statusmsg)[11])
+		let v:statusmsg = s:old_status
+	end
+	call setpos('.', position)
+	return s:word_count
+endfunction
+
+" Simple statusline
+set statusline=%f\ \(%{WordCount()}\ words\)
+
+" Add a quick way to toggle Goyo
+map <leader>w :Goyo<cr>
+
