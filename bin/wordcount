@@ -13,6 +13,6 @@ then
 	exit 2
 fi
 
-WORDS=$(wc -w `find $MANUSCRIPT/manuscript -type f` | tail -n1 | cut -d" " -f2)
+WORDS=$(wc -w `find $MANUSCRIPT/manuscript -type f` | tail -n1 | awk '{ print $1 }')
 
 echo "$WORDS words"
