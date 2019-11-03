@@ -21,6 +21,10 @@ map j gj
 map k gk
 inoremap qq <esc>
 
+" Auto-save
+autocmd! CursorHold *.md,*.txt update
+autocmd! CursorHoldI *.md,*.txt update
+
 " Set up Limelight to start and end with Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
