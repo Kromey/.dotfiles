@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """A simple Python port-knocking script
 
 This script allows a client machine to quickly send a "secret knock" to a known
@@ -23,13 +23,6 @@ import argparse
 import subprocess
 from time import sleep
 
-#Python 2/3 compatibility
-try:
-    #It's input in Py3, but raw_input in Py2
-    input = raw_input
-except:
-    #Don't need to do any fixing-up :)
-    pass
 
 class Knocker:
     def __init__(self, host):
