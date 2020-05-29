@@ -16,6 +16,8 @@ alias lt='ll -t'
 alias la='ll -a'
 alias l.='ll -d .*'
 
+alias ptree='tree -I "__pycache__"'
+
 alias rmdir='rm -rf'
 
 # Alias to knock before SSH'ing
