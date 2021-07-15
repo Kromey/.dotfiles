@@ -111,7 +111,11 @@ def main():
             ssh_host = host
 
         print("Opening SSH connection...")
-        subprocess.call(['ssh', ssh_host])
+        try:
+            subprocess.call(['ssh', ssh_host])
+        except KeyboardInterrupt:
+            print("Terminating")
+            # No need to do anything here, the script will just exit normally
 
 if __name__ == '__main__':
     #Run the script if it's called directly
