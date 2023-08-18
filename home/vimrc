@@ -150,6 +150,9 @@ set tags=./tags,tags;
 " (Convenient for SuperSalon development)
 "au BufNewFile,BufRead *.tmpl set filetype=php
 
+" Set line width to hard-wrap at 80 characters in Markdown files
+au BufNewFile,BufRead *.md setlocal textwidth=80
+
 " Associate .html files as Django templates
 " Not going to hurt regular HTML at all, but does give us the Django stuff
 au BufNewFile,BufRead *.html set filetype=htmldjango
